@@ -1,36 +1,36 @@
 <div class="container p-3" th:fragment="contenido">
     <div class="card p-5 pt-3">
         <div class="row mb-5">
-            <div class="col h2">Listado de productos</div>
-            <a href="/productos/crear" class="col-auto btn btn-lg btn-success">
+            <div class="col h2">Listado de productores</div>
+            <a href="/productores/crear" class="col-auto btn btn-lg btn-success">
                 <i class="fa-solid fa-plus"></i>
             </a>
         </div>
 
-        <table id="productos" class="display" style="width:100%">
+        <table id="productores" class="display" style="width:100%">
             <thead>
                 <tr>
                     <th>Nombre</th>
-                    <th>Precio</th>
-                    <th>Unidad de medida</th>
+                    <th>Teléfono</th>
+                    <th>Localidad</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="j : ${productos}">
-                    <td th:text="${p.nombre}"></td>
+                <tr th:each="j : ${productores}">
+                    <td th:text="${pr.nombre}"></td>
                     
                     
                     <td>
-                        <a class="btn btn-primary" th:href="@{'/productos/{id}' (id=${p.id})}">
+                        <a class="btn btn-primary" th:href="@{'/productores/{id}' (id=${ps.id})}">
                             <i class="fa-solid fa-eye"></i>
                         </a>
 
-                        <a class="btn btn-secondary" th:href="@{'/productos/editar/{id}' (id=${p.id})}">
+                        <a class="btn btn-secondary" th:href="@{'/productores/editar/{id}' (id=${pr.id})}">
                             <i class="fa-solid fa-pencil"></i>
                         </a>
 
-                        <form class="d-inline" th:action="@{'/productos/{id}' (id=${p.id})}" th:method="DELETE">
+                        <form class="d-inline" th:action="@{'/productores/{id}' (id=${pr.id})}" th:method="DELETE">
                             <button type="submit" class="btn btn-danger">
                                 <i class="fa-solid fa-trash-can"></i>
                             </button>
@@ -44,6 +44,6 @@
 
 <script th:fragment="script">
     $(document).ready(function() {
-        $('#productos').DataTable();
+        $('#productores').DataTable();
     } );
 </script>

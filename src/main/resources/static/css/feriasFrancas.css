@@ -1,7 +1,4 @@
-@font-face {
-    font-family: 'Qatar2022';
-    src: url("/fonts/Qatar2022.woff2");
-}
+
 
 body {
     background: url("/images/fondo.jpg") no-repeat center center fixed;
@@ -18,7 +15,7 @@ body {
 --------------------------------------------------- */
 
 .navbar {
-    font-family: 'Qatar2022', sans-serif;
+    font-family: sans-serif;
     background-color: #8A1538;
     z-index: 9999;
 }

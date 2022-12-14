@@ -3,24 +3,24 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    Crear producto
+                    Editar productor
                 </div>
-                <form class="card-body" action="/producto" method="POST" enctype="multipart/form-data">
+                <form class="card-body" action="/productor" method="POST" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="nombre" class="form-label">Nombre</label>
                         <input type="text" class="form-control" id="nombre" name="nombre">
                     </div>
                     <div class="mb-3">
-                        <label for="precio" class="form-label">Precio</label>
-                        <input type="double" class="form-control" id="precio" name="precio">
+                        <label for="telefono" class="form-label">Precio</label>
+                        <input type="Long" class="form-control" id="telefono" name="telefono">
                     </div>
                     <div class="mb-3">
-                        <label for="unidadMedida" class="form-label">Unidad de Medida</label>
-                        <input type="double" class="form-control" id="unidadMedida" name="unidadMedida">
+                        <label for="localidad" class="form-label">Unidad de Medida</label>
+                        <input type="String" class="form-control" id="localidad" name="localidad">
                    
                     <div class="d-flex justify-content-center">
                         <button type="submit" class="btn btn-primary mx-2">Guardar</button>
-                        <a href="/producto" class="btn btn-secondary mx-2">Volver</a>
+                        <a href="/productor" class="btn btn-secondary mx-2">Volver</a>
                     </div>
                 </form>
             </div>

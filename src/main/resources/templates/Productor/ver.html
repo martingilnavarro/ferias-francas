@@ -2,19 +2,19 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header h3" th:text="${producto.nombre}"></div>
+                <div class="card-header h3" th:text="${productor.nombre}"></div>
                 <div class="card-body">
                     <p>
-                        <span class="fw-bold">Precio:</span>
-                        <span th:text="${producto.precio}"></span>
+                        <span class="fw-bold">Teléfono:</span>
+                        <span th:text="${productor.telefono}"></span>
                     </p>
                     <p>
-                        <span class="fw-bold">Unidad de Medidad:</span>
-                        <span th:text="${producto.unidadMedida}"></span>
+                        <span class="fw-bold">Localidad:</span>
+                        <span th:text="${productor.localidad}"></span>
                     </p>
                     
                     <div class="d-flex justify-content-center">
-                        <a href="/productos" class="btn btn-secondary mx-2">Volver</a>
+                        <a href="/productores" class="btn btn-secondary mx-2">Volver</a>
                     </div>
                 </div>
             </div>

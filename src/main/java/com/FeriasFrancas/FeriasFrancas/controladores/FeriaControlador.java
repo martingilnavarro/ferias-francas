@@ -12,7 +12,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import com.FeriasFrancas.FeriasFrancas.Servicios.FeriaServicio;
 
 @RestController
-//@RequestMapping("feria")
+@RequestMapping("feria")
 public class FeriaControlador implements WebMvcConfigurer {
 
     @Autowired
