@@ -1,6 +1,5 @@
 package com.FeriasFrancas.FeriasFrancas.Entidades;
 
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
@@ -21,8 +20,8 @@ public class Feria {
     private String nombre;
 
     
-  //  @NotNull(message = "Debe elegir un valor")  // investigar como seleccionar dias de la semana
-  //   private String diasDeLaSemana;
+   @NotNull(message = "Debe elegir un valor")  
+    private String dias;
 
     @Temporal(TemporalType.TIME)
     @NotNull(message = "Campo obligatorio")

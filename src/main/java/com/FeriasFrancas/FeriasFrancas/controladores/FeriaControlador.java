@@ -1,30 +1,27 @@
 package com.FeriasFrancas.FeriasFrancas.controladores;
-// import com.FeriasFrancas.FeriasFrancas.Entidades.*;
- // import java.util.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.*;
 
+import com.FeriasFrancas.FeriasFrancas.Entidades.*;
+import com.FeriasFrancas.FeriasFrancas.Servicios.FeriaServicio; 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import com.FeriasFrancas.FeriasFrancas.Servicios.FeriaServicio;
 
 @RestController
-@RequestMapping("feria")
+@RequestMapping("ferias")
 public class FeriaControlador implements WebMvcConfigurer {
 
     @Autowired
     FeriaServicio feriaServicio;
 
-    @GetMapping
+    @GetMapping()
     private ModelAndView index(){
         ModelAndView maw = new ModelAndView();
-        maw.setViewName("fragments/base");
-        maw.addObject("titulo", "Listado de ferias");
-        maw.addObject("vista", "ferias/index");
-        maw.addObject("ferias", feriaServicio.getAll());
+        maw.setViewName("/fragments/base");  
+        maw.addObject("titulo", "Listado de Ferias");  
+       maw.addObject("vista", "Feria/index");
+       maw.addObject("ferias", feriaServicio.getAll());
         return maw;
     }
 
@@ -33,11 +30,39 @@ public class FeriaControlador implements WebMvcConfigurer {
     {
         ModelAndView maw = new ModelAndView();
         maw.setViewName("fragments/base");
-        maw.addObject("titulo", "Detalle del jugador #" + id);
-        maw.addObject("vista", "jugadores/ver");
-        maw.addObject("feria", FeriaServicio.getById(id));
+        maw.addObject("titulo", "Detalle de la feria #" + id);
+        maw.addObject("vista", "Feria/ver");
+        maw.addObject("feria", feriaServicio.getById(id));
         return maw;
     }
 
+    @GetMapping("/crear")
+	public ModelAndView crear(Feria feria)
+    {
+        ModelAndView maw = new ModelAndView();
+        maw.setViewName("fragments/base");
+        maw.addObject("titulo", "Crear Feria");
+        maw.addObject("vista", "Feria/crear");
+        maw.addObject("ferias", feriaServicio.getAll());
+      //  maw.addObject("localidades", localidadServicio.getAll()); // crear ver como funciona la localidad
+        return maw;
+	}
+
+  
+
+
+
+
+
+
+
+    @DeleteMapping("/{id}")
+    private ModelAndView delete(@PathVariable("id") Long id)
+    {
+        feriaServicio.delete(id);
+        ModelAndView maw = this.index();
+        maw.addObject("exito", "feria borrado exitosamente");
+		return maw;
+    }
 
 }

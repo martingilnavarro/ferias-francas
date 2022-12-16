@@ -1,18 +1,16 @@
 package com.FeriasFrancas.FeriasFrancas.Servicios;
 
-import com.FeriasFrancas.FeriasFrancas.Repositorios.*;
-import com.FeriasFrancas.FeriasFrancas.Entidades.*;
+import java.util.*;
+import com.FeriasFrancas.FeriasFrancas.Repositorios.FeriaRepositorio;
+import com.FeriasFrancas.FeriasFrancas.Entidades.Feria;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.Service;
-import java.util.*;
-
 
 
 @Service
 public class FeriaServicio {
 
-    @Autowired
-    static
+    @Autowired    
     FeriaRepositorio feriaRepositorio;
 
     public List<Feria> getAll()
@@ -22,7 +20,7 @@ public class FeriaServicio {
   return lista;
 }
 
-public static Feria getById(Long id){
+public  Feria getById(Long id){
     return feriaRepositorio.findById(id).get();
 }
  public void save(Feria feria){

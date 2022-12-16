@@ -5,24 +5,19 @@ import jakarta.validation.constraints.*;
 import lombok.*;
 
 @Entity
- @NoArgsConstructor
- @AllArgsConstructor
- @Data
-  @Builder
-  @Table(name = "productos")
-public class Producto {
-
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@Builder
+@Table(name = "localidades")
+public class Localidad {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Campo obligatorio")
+     @NotBlank(message = "Campo obligatorio")
     @Size(max = 250, message= "Nombre demasiado largo")
     private String nombre;
 
-    private double precio;
-    
-    
-    private String unidadMedida;
-    
+    private int cantidadFerias;
 }
