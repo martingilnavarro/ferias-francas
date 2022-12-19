@@ -32,10 +32,6 @@ public class Feria {
     private int horaCierre;
 
     private String direccion;
-    
 
-    @NotBlank(message = "Campo obligatorio")
-    @Size(max = 250, message= "Nombre demasiado largo")
-    private String localidad;
       
 }
