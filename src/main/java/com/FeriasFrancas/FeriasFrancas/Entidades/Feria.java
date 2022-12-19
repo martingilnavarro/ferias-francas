@@ -1,5 +1,7 @@
 package com.FeriasFrancas.FeriasFrancas.Entidades;
 
+import java.sql.Time;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
@@ -25,11 +27,14 @@ public class Feria {
 
     @Temporal(TemporalType.TIME)
     @NotNull(message = "Campo obligatorio")
-    private int horaApertura;
+    private Time horaApertura;
     
+    /**
+     *
+     */
     @Temporal(TemporalType.TIME)
     @NotNull(message = "Campo obligatorio")
-    private int horaCierre;
+    private Time horaCierre;
 
     private String direccion;
 

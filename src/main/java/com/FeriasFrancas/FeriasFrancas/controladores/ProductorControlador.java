@@ -29,7 +29,7 @@ public class ProductorControlador {
         maw.setViewName("/fragments/base");  
         maw.addObject("titulo", "Crear Productor");  
        maw.addObject("vista", "Productor/crear");
-        maw.addObject("productos", productorServicio.getAll());
+        maw.addObject("productores", productorServicio.getAll());
         return maw;
 	}
 
