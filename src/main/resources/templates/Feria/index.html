@@ -1,5 +1,16 @@
 <div class="container p-3" th:fragment="contenido">
     <div class="card p-5 pt-3">
+        <div class="row">
+            <div th:if="${exito}" class="alert alert-success alert-dismissible fade show">
+                <span th:text="${exito}"></span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <div th:if="${error}" class="alert alert-danger alert-dismissible fade show">
+                <span th:text="${error}"></span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+
         <div class="row mb-5">
             <div class="col h2">Listado de Ferias</div>
             <a href="/ferias/crear" class="col-auto btn btn-lg btn-success">
@@ -14,25 +25,28 @@
                     <th>Día</th>
                     <th>Hora de Apertura</th>
                     <th>Hora de Cierre</th>
-                    <th>Dirección</th>
-                    
+                    <th>Dirección</th>                    
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="j : ${ferias}">
-                    <td th:text="${f.nombre}"></td>
+                    <td th:text="${j.nombre}"></td>
+                    <td th:text="${j.dias}"></td>
+                    <td th:text="${j.horaApertura}"></td>
+                    <td th:text="${j.horaCierre}"></td>
+                    <td th:text="${j.direccion}"></td>
                     
                     
                     <td>
-                        <a class="btn btn-primary" th:href="@{'/ferias/{id}' (id=${f.id})}">
+                        <a class="btn btn-primary" th:href="@{'/ferias/{id}' (id=${j.id})}">
                             <i class="fa-solid fa-eye"></i>
                         </a>
 
-                        <a class="btn btn-secondary" th:href="@{'/ferias/editar/{id}' (id=${f.id})}">
+                        <a class="btn btn-secondary" th:href="@{'/feria/editar/{id}' (id=${j.id})}">
                             <i class="fa-solid fa-pencil"></i>
                         </a>
 
-                        <form class="d-inline" th:action="@{'/ferias/{id}' (id=${f.id})}" th:method="DELETE">
+                        <form class="d-inline" th:action="@{'/ferias/{id}' (id=${j.id})}" th:method="DELETE">
                             <button type="submit" class="btn btn-danger">
                                 <i class="fa-solid fa-trash-can"></i>
                             </button>

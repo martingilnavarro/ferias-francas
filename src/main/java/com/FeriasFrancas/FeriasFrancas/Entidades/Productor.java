@@ -1,26 +1,23 @@
 package com.FeriasFrancas.FeriasFrancas.Entidades;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
 import lombok.*;
 
 @Entity
- @NoArgsConstructor
- @AllArgsConstructor
- @Data
-  @Builder
-  @Table(name = "productores")
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@Builder
+@Table(name = "productores")
 public class Productor {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
-    @NotBlank(message = "Campo obligatorio")
-    @Size(max = 250, message= "Nombre demasiado largo")
-    private String nombre;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    private Long telefono;
+  private String nombre;
 
-    private String localidad;
+  private int telefono;
+
+  private String localidad;
 }

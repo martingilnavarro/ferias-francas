@@ -5,22 +5,22 @@
                 <div class="card-header">
                     Crear producto
                 </div>
-                <form class="card-body" action="/producto" method="POST" enctype="multipart/form-data">
+                <form class="card-body" action="/productos" method="POST" >
                     <div class="mb-3">
-                        <label for="nombre" class="form-label">Nombre</label>
+                        <label for="nombre" class="form-label">Nombre  del producto</label>
                         <input type="text" class="form-control" id="nombre" name="nombre">
                     </div>
                     <div class="mb-3">
-                        <label for="precio" class="form-label">Precio</label>
-                        <input type="double" class="form-control" id="precio" name="precio">
+                        <label for="precio" class="form-label">Precio del producto</label>
+                        <input type="number" class="form-control" id="precio" name="precio">
                     </div>
                     <div class="mb-3">
                         <label for="unidadMedida" class="form-label">Unidad de Medida</label>
-                        <input type="double" class="form-control" id="unidadMedida" name="unidadMedida">
+                        <input type="text" class="form-control" id="unidadMedida" name="unidadMedida">
                    
                     <div class="d-flex justify-content-center">
                         <button type="submit" class="btn btn-primary mx-2">Guardar</button>
-                        <a href="/producto" class="btn btn-secondary mx-2">Volver</a>
+                        <a href="/productos" class="btn btn-secondary mx-2">Volver</a>
                     </div>
                 </form>
             </div>

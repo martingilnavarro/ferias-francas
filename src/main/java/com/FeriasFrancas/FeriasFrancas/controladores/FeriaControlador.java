@@ -37,7 +37,7 @@ public class FeriaControlador implements WebMvcConfigurer {
         maw.setViewName("fragments/base");
         maw.addObject("titulo", "Detalle de la feria #" + id);
         maw.addObject("vista", "Feria/ver");
-        maw.addObject("ferias", feriaServicio.getById(id));
+        maw.addObject("feria", feriaServicio.getById(id));
         return maw;
     }
 
@@ -47,11 +47,9 @@ public class FeriaControlador implements WebMvcConfigurer {
         ModelAndView maw = new ModelAndView();
         maw.setViewName("fragments/base");
         maw.addObject("titulo", "Crear Feria");
-        maw.addObject("vista", "Feria/crear");
-        maw.addObject("ferias", feria);     
+        maw.addObject("vista", "Feria/crear");          
         return maw;
 	}
-
      
 	@PostMapping("/crear")
 	public ModelAndView guardar(@Valid Feria feria, BindingResult br, RedirectAttributes ra)

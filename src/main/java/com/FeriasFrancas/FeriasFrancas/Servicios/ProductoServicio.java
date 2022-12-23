@@ -24,8 +24,8 @@ public class ProductoServicio {
 public  Producto getById(Long id){
     return productoRepositorio.findById(id).get();
 }
- public void save(Producto feria){
-productoRepositorio.save(feria);
+ public void save(Producto producto){
+productoRepositorio.save(producto);
  }
  public void delete(Long id){
     productoRepositorio.deleteById(id);
