@@ -1,5 +1,5 @@
 <div class="container p-3" th:fragment="contenido">
-    <div class="card p-5 pt-3">
+    <div class="card p-4">
         <div class="row">
             <div th:if="${exito}" class="alert alert-success alert-dismissible fade show">
                 <span th:text="${exito}"></span>
@@ -12,36 +12,32 @@
         </div>
 
         <div class="row mb-5">
-            <div class="col h2">Listado de productos</div>
-            <a href="/productos/crear" class="col-auto btn btn-lg btn-success">
+            <div class="col h2">Listado de roles</div>
+            <a href="/roles/crear" class="col-auto btn btn-lg btn-success">
                 <i class="fa-solid fa-plus"></i>
             </a>
         </div>
 
-        <table id="productos" class="display" style="width:100%">
+        <table id="roles" class="display" style="width:100%">
             <thead>
                 <tr>
                     <th>Nombre</th>
-                    <th>Precio</th>
-                    <th>Unidad de medida</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="j : ${productos}">
-                    <td th:text="${j.nombre}"></td>
-                    <td th:text="${j.precio}"></td>
-                    <td th:text="${j.unidadMedida}"></td>                  
+                <tr th:each="r : ${roles}">
+                    <td th:text="${r.nombre}"></td>
                     <td>
-                        <a class="btn btn-primary" th:href="@{'/productos/{id}' (id=${j.id})}">
+                        <a class="btn btn-primary" th:href="@{'/roles/{id}' (id=${r.id})}">
                             <i class="fa-solid fa-eye"></i>
                         </a>
 
-                        <a class="btn btn-secondary" th:href="@{'/productos/editar/{id}' (id=${j.id})}">
+                        <a class="btn btn-secondary" th:href="@{'/roles/editar/{id}' (id=${r.id})}">
                             <i class="fa-solid fa-pencil"></i>
                         </a>
 
-                        <form class="d-inline" th:action="@{'/productos/{id}' (id=${j.id})}" th:method="DELETE">
+                        <form class="d-inline" th:action="@{'/roles/{id}' (id=${r.id})}" th:method="DELETE">
                             <button type="submit" class="btn btn-danger" onclick="return confirm('¿Seguro de eliminar?')">
                                 <i class="fa-solid fa-trash-can"></i>
                             </button>
@@ -55,6 +51,6 @@
 
 <script th:fragment="script">
     $(document).ready(function() {
-        $('#productos').DataTable();
+        $('#roles').DataTable();
     } );
 </script>

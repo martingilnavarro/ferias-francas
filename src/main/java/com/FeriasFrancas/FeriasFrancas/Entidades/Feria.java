@@ -1,9 +1,8 @@
 package com.FeriasFrancas.FeriasFrancas.Entidades;
+
+
+
 import java.sql.Time;
-import java.util.Date;
-
-import org.hibernate.validator.constraints.Range;
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
@@ -20,28 +19,29 @@ public class Feria {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
+    
     @NotBlank(message = "Campo obligatorio")
     @Size(max = 250, message= "Nombre demasiado largo")
     private String nombre;
 
     
-    @NotNull
+    
     @NotBlank(message = "Campo obligatorio")
     private String dias;
 
+    //@NotBlank 
     @Temporal(TemporalType.TIME)
-    @NotNull
-    @NotBlank(message = "Campo obligatorio")   
+    @NotNull(message = "Campo obligatorio")  
+     
     private Time horaApertura;
     
     
-   @Temporal(TemporalType.TIME)
-    @NotNull
-    @NotBlank(message = "Campo obligatorio")  
+    //@NotBlank
+    @Temporal(TemporalType.TIME)
+    @NotNull(message = "Campo obligatorio")     
     private Time horaCierre;
 
-    @NotNull
+    
     @NotBlank(message = "Campo obligatorio")
     @Size(max = 250, message= "Nombre demasiado largo")
     private String direccion;
