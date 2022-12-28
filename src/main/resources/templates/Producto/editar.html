@@ -5,22 +5,19 @@
                 <div class="card-header">
                     <h2>Editar producto</h2> 
                 </div>
-                <form class="card-body" th:action="@{'/productos/editar/{id}' (id=${producto.id})}" th:object="${producto}" th:method="PUT">
+                <form class="card-body" action="/producto" method="PUT">
                     <div class="mb-3">
-                        <label for="nombre" class="form-label">Nuevo nombre  del producto</label>
-                        <input type="text" class="form-control" id="nombre" th:field="*{nombre}" th:errorClass="'is-invalid'">
-                        <div class="invalid-feedback" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre">
                     </div>
                     <div class="mb-3">
-                        <label for="precio" class="form-label">Nuevo precio del producto</label>
-                        <input type="number" class="form-control" id="precio" th:field="*{precio}" th:errorClass="'is-invalid'">
-                        <div class="invalid-feedback" th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"></div>
+                        <label for="precio" class="form-label">Precio</label>
+                        <input type="number" class="form-control" id="precio" name="precio">
                     </div>
                     <div class="mb-3">
                         <label for="unidadMedida" class="form-label">Unidad de Medida</label>
-                        <input type="text" class="form-control" id="unidadMedida" th:field="*{unidadMedida}" th:errorClass="'is-invalid'">
-                        <div class="invalid-feedback" th:if="${#fields.hasErrors('unidadMedida')}" th:errors="*{unidadMedida}"></div>
-                    </div>
+                        <input type="text" class="form-control" id="precio" name="precio">
+                   
                     <div class="d-flex justify-content-center">
                         <button type="submit" class="btn btn-primary mx-2">Editar</button>
                         <a href="/productos" class="btn btn-secondary mx-2">Volver</a>
@@ -31,4 +28,11 @@
     </div>
 </div>
 
-<script th:fragment="script"></script>
+<script th:fragment="script">
+    $(document).ready(function() {
+        $('.select2').select2({
+            placeholder: 'Seleccione una opción',
+            width: '100%',
+        });
+    });
+</script>

@@ -31,7 +31,9 @@
                 <tr th:each="j : ${productos}">
                     <td th:text="${j.nombre}"></td>
                     <td th:text="${j.precio}"></td>
-                    <td th:text="${j.unidadMedida}"></td>                  
+                    <td th:text="${j.unidadMedida}"></td>
+                    
+                    
                     <td>
                         <a class="btn btn-primary" th:href="@{'/productos/{id}' (id=${j.id})}">
                             <i class="fa-solid fa-eye"></i>
@@ -42,7 +44,7 @@
                         </a>
 
                         <form class="d-inline" th:action="@{'/productos/{id}' (id=${j.id})}" th:method="DELETE">
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('¿Seguro de eliminar?')">
+                            <button type="submit" class="btn btn-danger">
                                 <i class="fa-solid fa-trash-can"></i>
                             </button>
                         </form>

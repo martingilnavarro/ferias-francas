@@ -6,8 +6,8 @@
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD FAILURE
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  0.182 s
-[INFO] Finished at: 2022-12-25T18:04:29-03:00
+[INFO] Total time:  0.251 s
+[INFO] Finished at: 2022-12-20T13:45:28-03:00
 [INFO] ------------------------------------------------------------------------
 [ERROR] Unknown lifecycle phase "spring-boot". You must specify a valid lifecycle phase or a goal in the format <plugin-prefix>:<goal> or <plugin-group-id>:<plugin-artifact-id>[:<plugin-version>]:<goal>. Available lifecycle phases are: validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy, pre-clean, clean, post-clean, pre-site, site, post-site, site-deploy. -> [Help 1]
 [ERROR] 

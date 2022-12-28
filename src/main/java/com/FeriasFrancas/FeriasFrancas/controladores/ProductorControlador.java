@@ -36,15 +36,12 @@ public class ProductorControlador implements WebMvcConfigurer {
         maw.setViewName("/fragments/base");
         maw.addObject("titulo", "Crear Productor");
         maw.addObject("vista", "Productor/crear");
-        maw.addObject("productor", productor);
         return maw;
     }
 
-    @PostMapping("/crear")
-    public ModelAndView guardar(@Valid Productor productor, BindingResult br, RedirectAttributes ra) {
-        if (br.hasErrors()){
-            return this.crear(productor);
-        }
+    @PostMapping()
+    public ModelAndView guardar(Productor productor) {
+
         productorServicio.save(productor);
 
         ModelAndView maw = this.index();
@@ -61,7 +58,14 @@ public class ProductorControlador implements WebMvcConfigurer {
         maw.addObject("productor", productorServicio.getById(id));
         return maw;
     }
-   
+
+    @DeleteMapping("/{id}")
+    private ModelAndView delete(@PathVariable("id") Long id) {
+        productorServicio.delete(id);
+        ModelAndView maw = this.index();
+        maw.addObject("exito", "Productor borrado exitosamente");
+        return maw;
+    }
 
     @GetMapping("/editar/{id}")
     public ModelAndView editar(@PathVariable("id") Long id, Productor productor) {
@@ -81,24 +85,14 @@ public class ProductorControlador implements WebMvcConfigurer {
             maw.setViewName("fragments/base");
             maw.addObject("titulo", "Editar productor");
             maw.addObject("vista", "productor/editar");
-            maw.addObject("productor", productor);
+            maw.addObject("productor", productorServicio);
             return maw;
         }
         Productor registro = productorServicio.getById(id);
         registro.setNombre(productor.getNombre());
-        registro.setTelefono(productor.getTelefono());
-        registro.setLocalidad(productor.getLocalidad());
         ModelAndView maw = this.index();
         productorServicio.save(registro);
         maw.addObject("exito", "productor editado exitosamente");
-        return maw;
-    }
-
-    @DeleteMapping("/{id}")
-    private ModelAndView delete(@PathVariable("id") Long id) {
-        productorServicio.delete(id);
-        ModelAndView maw = this.index();
-        maw.addObject("exito", "Productor borrado exitosamente");
         return maw;
     }
 }
