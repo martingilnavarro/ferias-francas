@@ -22,10 +22,11 @@
             <thead>
                 <tr>
                     <th>Nombre</th>
-                    <th>Día</th>
+                    <th>Días</th>
                     <th>Hora de Apertura</th>
                     <th>Hora de Cierre</th>
-                    <th>Dirección</th>                    
+                    <th>Dirección</th>   
+                    <th>Acciones</th>                 
                 </tr>
             </thead>
             <tbody>
@@ -42,12 +43,12 @@
                             <i class="fa-solid fa-eye"></i>
                         </a>
 
-                        <a class="btn btn-secondary" th:href="@{'/feria/editar/{id}' (id=${j.id})}">
+                        <a class="btn btn-secondary" th:href="@{'/ferias/editar/{id}' (id=${j.id})}">
                             <i class="fa-solid fa-pencil"></i>
                         </a>
 
                         <form class="d-inline" th:action="@{'/ferias/{id}' (id=${j.id})}" th:method="DELETE">
-                            <button type="submit" class="btn btn-danger">
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('¿Seguro de eliminar?')">
                                 <i class="fa-solid fa-trash-can"></i>
                             </button>
                         </form>

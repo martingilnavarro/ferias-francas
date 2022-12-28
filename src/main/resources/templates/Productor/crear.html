@@ -3,21 +3,24 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    Crear productor
+                    <h2>Crear productor</h2>
                 </div>
-                <form class="card-body" action="/productores" method="POST" >
+                <form class="card-body" th:action="@{/productores/crear}" th:object="${productor}" method="POST">
                     <div class="mb-3">
-                        <label for="nombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre">
+                        <label for="nombre" class="form-label">Nombre del productor</label>
+                        <input type="text" class="form-control" id="nombre" th:field="*{nombre}" th:errorClass="'is-invalid'">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
                     </div>
                     <div class="mb-3">
-                        <label for="telefono" class="form-label">telefono</label>
-                        <input type="number" class="form-control" id="telefono" name="telefono">
+                        <label for="telefono" class="form-label">Telefono</label>
+                        <input type="number" class="form-control" id="telefono" th:field="*{telefono}" th:errorClass="'is-invalid'">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></div>
                     </div>
                     <div class="mb-3">
-                        <label for="localidad" class="form-label">localidad</label>
-                        <input type="text" class="form-control" id="localidad" name="localidad">
-                   
+                        <label for="localidad" class="form-label">Localidad</label>
+                        <input type="text" class="form-control" id="localidad" th:field="*{localidad}" th:errorClass="'is-invalid'">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('localidad')}" th:errors="*{localidad}"></div>
+                    </div>
                     <div class="d-flex justify-content-center">
                         <button type="submit" class="btn btn-primary mx-2">Guardar</button>
                         <a href="/productores" class="btn btn-secondary mx-2">Volver</a>
@@ -29,10 +32,5 @@
 </div>
 
 <script th:fragment="script">
-    $(document).ready(function() {
-        $('.select2').select2({
-            placeholder: 'Seleccione una opción',
-            width: '100%',
-        });
-    });
+   
 </script>

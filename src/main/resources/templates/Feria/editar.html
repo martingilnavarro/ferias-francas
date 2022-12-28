@@ -3,32 +3,37 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    Editar feria
+                    <h2>Editar feria</h2>  
                 </div>
-                <form class="card-body" action="/feria" method="POST" enctype="multipart/form-data">
+                <form class="card-body" th:action="@{/ferias/editar/{id}}" th:object="${feria}" method="PUT">
                     <div class="mb-3">
-                        <label for="nombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre">
+                        <label for="nombre" class="form-label">Nombre de la Feria</label>
+                        <input type="text" class="form-control" id="nombre" th:field="*{nombre}" th:errorClass="'is-invalid'">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
                     </div>
                     <div class="mb-3">
-                        <label for="dia" class="form-label">Precio</label>
-                        <input type="String" class="form-control" id="dia" name="dia">
+                        <label for="dias" class="form-label">Dias</label>
+                        <input type="text" class="form-control" id="dias" th:field="*{dias}" th:errorClass="'is-invalid'">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('dias')}" th:errors="*{dias}"></div>
                     </div>
                     <div class="mb-3">
-                        <label for="horaApertura" class="form-label">Precio</label>
-                        <input type="Time" class="form-control" id="horaApertura" name="horaApertura">
+                        <label for="horaApertura" class="form-label">Hora de apertura</label>
+                        <input type="time" class="form-control" id="horaApertura" th:field="*{horaApertura}" th:errorClass="'is-invalid'">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('horaApertura')}" th:errors="*{horaApertura}"></div>
                     </div>
                     <div class="mb-3">
-                        <label for="horaCierre" class="form-label">Precio</label>
-                        <input type="Time" class="form-control" id="horaCierre" name="horaCierre">
+                        <label for="horaCierre" class="form-label">Hora de cierre</label>
+                        <input type="time" class="form-control" id="horaCierre" th:field="*{horaCierre}" th:errorClass="'is-invalid'">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('horaCierre')}" th:errors="*{horaCierre}"></div>
                     </div>
                     <div class="mb-3">
-                        <label for="direccion" class="form-label">Unidad de Medida</label>
-                        <input type="String" class="form-control" id="direccion" name="direccion">
-                   
+                        <label for="direccion" class="form-label">Direccion</label>
+                        <input type="text" class="form-control" id="direccion" th:field="*{direccion}" th:errorClass="'is-invalid'">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}"></div>
+                    </div>
                     <div class="d-flex justify-content-center">
                         <button type="submit" class="btn btn-primary mx-2">Guardar</button>
-                        <a href="/feria" class="btn btn-secondary mx-2">Volver</a>
+                        <a href="/ferias" class="btn btn-secondary mx-2">Volver</a>
                     </div>
                 </form>
             </div>
@@ -37,10 +42,5 @@
 </div>
 
 <script th:fragment="script">
-    $(document).ready(function() {
-        $('.select2').select2({
-            placeholder: 'Seleccione una opción',
-            width: '100%',
-        });
-    });
+   
 </script>

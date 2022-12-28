@@ -29,6 +29,69 @@ public class FeriaControlador implements WebMvcConfigurer {
        maw.addObject("ferias", feriaServicio.getAll());
         return maw;
     }
+   
+
+    @GetMapping("/crear")
+	public ModelAndView crear(Feria feria)
+    {
+        ModelAndView maw = new ModelAndView();
+        maw.setViewName("fragments/base");
+        maw.addObject("titulo", "Crear Feria");
+        maw.addObject("vista", "Feria/crear");  
+        maw.addObject("feria", feria);        
+        return maw;
+	}
+     
+	@PostMapping("/crear")
+	public ModelAndView guardar(@Valid Feria feria, BindingResult br, RedirectAttributes ra)
+    {
+		if ( br.hasErrors() ) {
+			return this.crear(feria);
+		}
+
+        feria.getHoraApertura().toString();
+        feria.getHoraCierre().toString();
+		feriaServicio.save(feria);
+
+            
+        
+        ModelAndView maw = this.index();
+        
+        maw.addObject("exito", "Feria guardada exitosamente");
+		return maw;
+	}
+
+    @GetMapping("/editar/{id}")
+    public ModelAndView editar(@PathVariable("id") Long id, Feria feria) {
+        ModelAndView maw = new ModelAndView();
+        maw.setViewName("fragments/base");
+        maw.addObject("titulo", "Editar feria");
+        maw.addObject("vista", "Feria/editar");
+        maw.addObject("feria", feriaServicio.getById(id));
+        return maw;
+    }
+
+    @PutMapping("/editar/{id}")
+    public ModelAndView update(@PathVariable("id") Long id, @Valid Feria feria, BindingResult br,  RedirectAttributes ra) {
+        if (br.hasErrors()) {
+            ModelAndView maw = new ModelAndView();
+            maw.setViewName("fragments/base");
+            maw.addObject("titulo", "Editar feria");
+            maw.addObject("vista", "Feria/editar");
+            maw.addObject("feria", feria);
+            return maw;
+        }
+        Feria registro = feriaServicio.getById(id);
+        registro.setNombre(feria.getNombre());
+        registro.setDias(feria.getDias());
+        registro.setHoraApertura(feria.getHoraApertura());
+        registro.setHoraCierre(feria.getHoraCierre());
+        registro.setDireccion(feria.getDireccion());
+        ModelAndView maw = this.index();
+        feriaServicio.save(registro);
+        maw.addObject("exito", "Feria editada exitosamente");
+        return maw;
+    }
 
     @GetMapping("/{id}")
     private ModelAndView one(@PathVariable("id") Long id)
@@ -40,30 +103,6 @@ public class FeriaControlador implements WebMvcConfigurer {
         maw.addObject("feria", feriaServicio.getById(id));
         return maw;
     }
-
-    @GetMapping("/crear")
-	public ModelAndView crear(Feria feria)
-    {
-        ModelAndView maw = new ModelAndView();
-        maw.setViewName("fragments/base");
-        maw.addObject("titulo", "Crear Feria");
-        maw.addObject("vista", "Feria/crear");          
-        return maw;
-	}
-     
-	@PostMapping("/crear")
-	public ModelAndView guardar(@Valid Feria feria, BindingResult br, RedirectAttributes ra)
-    {
-		if ( br.hasErrors() ) {
-			return this.crear(feria);
-		}
-
-		feriaServicio.save(feria);
-        
-        ModelAndView maw = this.index();
-        maw.addObject("exito", "Feria guardada exitosamente");
-		return maw;
-	}
 
     @DeleteMapping("/{id}")
     private ModelAndView delete(@PathVariable("id") Long id)
